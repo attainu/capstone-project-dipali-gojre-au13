@@ -51,6 +51,7 @@ export default function AppBarPrimary() {
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
+        
         <Link to="/" className={classes.title}>
           <Typography variant="h6" noWrap>
             <span className={classes.name}>Food</span>
