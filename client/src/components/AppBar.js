@@ -10,6 +10,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { logoutAction } from "../redux/actions/authActions";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -51,10 +52,9 @@ export default function AppBarPrimary() {
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
-        
         <Link to="/" className={classes.title}>
           <Typography variant="h6" noWrap>
-            <span className={classes.name}>Food</span>
+            <span className={classes.name}>MyFoodJunction</span>
           </Typography>
         </Link>
         {authenticated ? (

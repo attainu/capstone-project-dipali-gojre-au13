@@ -1,10 +1,15 @@
-
-require('dotenv').config({path: __dirname + '/.env'})
 const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv")
+dotenv.config()
+
+const app = express();
+
+const PORT = 3002;
+
 const multer = require("multer");
 
 const authRoutes = require("./routes/auth");
@@ -33,7 +38,6 @@ const fileFilter = (req, file, cb) => {
   else cb(null, false);
 };
 
-const app = express();
 
 const upload = multer({ storage: fileStorage, fileFilter: fileFilter });
 
@@ -74,13 +78,17 @@ app.use((error, req, res, next) => {
 
 const clients = {};
 
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-fvjx9.mongodb.net/${process.env.MONGO_DATABASE}?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true`
-  )
+
+
+const URI = `mongodb+srv://dipalisag:admin@cluster0.f8xea.mongodb.net/Foodapp?retryWrites=true&w=majority`
+
+mongoose.connect(URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false})
+  
   .then((result) => {
     console.log("Connected to db");
-    const server = app.listen(process.env.PORT || 3002);
+    const server = app.listen(process.env.PORT, (req, res) =>{
+      console.log(`Server is running on ${PORT}`);
+    });
     const io = require("./util/socket").init(server);
     io.on("connection", (socket) => {
       socket.on("add-user", (data) => {
