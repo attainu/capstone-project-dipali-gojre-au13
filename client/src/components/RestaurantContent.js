@@ -27,7 +27,7 @@ const RestaurantContent = () => {
         component="p"
         noWrap
       >
-        Order from your favourite Eatery -
+        Order from your favourite Restaurant -
       </Typography>
       <br />
       <Grid container spacing={2}>

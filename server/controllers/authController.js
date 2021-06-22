@@ -70,7 +70,7 @@ exports.signupUser = (req, res, next) => {
         from: "YOUR_SENDGRID_VERIFIED_EMAIL",
         subject: "Verify your Account on FoodHub",
         html: `
-                      <p>Please verify your email by clicking on the link below - FoodHub</p>
+                      <p>Please verify your email by clicking on the link below - Foodie</p>
                       <p>Click this <a href="http://localhost:3002/auth/verify/${token}">link</a> to verify your account.</p>
                     `,
       });

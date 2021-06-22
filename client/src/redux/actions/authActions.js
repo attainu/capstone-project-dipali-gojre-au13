@@ -27,7 +27,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 
     })
     .catch((err) => {
-      // console.log(err.response.data);
+      console.log(err.response.data);
       if (err.response) {
         dispatch({
           type: SET_ERRORS,

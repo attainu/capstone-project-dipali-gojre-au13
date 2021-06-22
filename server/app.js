@@ -76,7 +76,7 @@ app.use((error, req, res, next) => {
 });
 
 
-const clients = {};
+const client = {};
 
 
 
@@ -92,16 +92,16 @@ mongoose.connect(URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAnd
     const io = require("./util/socket").init(server);
     io.on("connection", (socket) => {
       socket.on("add-user", (data) => {
-        clients[data.userId] = {
+        client[data.userId] = {
           socket: socket.id,
         };
       });
 
       //Removing the socket on disconnect
       socket.on("disconnect", () => {
-        for (const userId in clients) {
-          if (clients[userId].socket === socket.id) {
-            delete clients[userId];
+        for (const userId in client) {
+          if (client[userId].socket === socket.id) {
+            delete client[userId];
             break;
           }
         }
@@ -110,4 +110,4 @@ mongoose.connect(URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAnd
   })
   .catch((err) => console.log(err));
 
-exports.clients = clients;
+exports.client = client;

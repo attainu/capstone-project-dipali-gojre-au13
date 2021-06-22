@@ -61,10 +61,10 @@ const HomeStart = () => {
     <section className={classes.presentation}>
       <div className={classes.introduction}>
         <Typography className={classes.safeFood} noWrap>
-          Safe Food
+         Welcome to
         </Typography>
         <Typography className={classes.delivery} noWrap>
-          DELIVERY
+          Myfoodjunction
         </Typography>
         <Typography variant="body2" className={classes.paragraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

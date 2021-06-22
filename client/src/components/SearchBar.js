@@ -95,6 +95,8 @@ export default function CustomizedInputBase(props) {
     props.handleSearch(event.target.value);
   };
 
+  // const REACT_APP_GOOGLE_API_KEY= 'AIzaSyB3-OPHpW9FLv08C-rfBDVWCmwhWAbx5Co';
+
   const getUserAddressBy = (lat, long) => {
     const latlng = {
       lat: lat,
@@ -102,7 +104,7 @@ export default function CustomizedInputBase(props) {
     };
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyB3-OPHpW9FLv08C-rfBDVWCmwhWAbx5Co`
       )
       .then((result) => {
         console.log(result.data);
