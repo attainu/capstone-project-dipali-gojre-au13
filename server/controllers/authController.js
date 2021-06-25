@@ -12,7 +12,7 @@ const Seller = require("../models/seller");
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key: process.env.SENDGRID_KEY,
+      api_key: process.env.API_KEY,
     },
   })
 );
@@ -67,7 +67,7 @@ exports.signupUser = (req, res, next) => {
     .then((savedUser) => {
       transporter.sendMail({
         to: email,
-        from: "YOUR_SENDGRID_VERIFIED_EMAIL",
+        from: "dipalisag@gmail.com",
         subject: "Verify your Account on FoodHub",
         html: `
                       <p>Please verify your email by clicking on the link below - Foodie</p>
@@ -239,7 +239,7 @@ exports.signupSeller = (req, res, next) => {
     .then((savedSeller) => {
       transporter.sendMail({
         to: email,
-        from: "YOUR_SENDGRID_VERIFIED_EMAIL",
+        from: "dipalisag@gmail.com",
         subject: "Verify your Account on FoodHub",
         html: `
                       <p>Please verify your email by clicking on the link below - FoodHub</p>

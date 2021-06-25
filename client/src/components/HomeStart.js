@@ -64,7 +64,7 @@ const HomeStart = () => {
          Welcome to
         </Typography>
         <Typography className={classes.delivery} noWrap>
-          Myfoodjunction
+          Foddie Center
         </Typography>
         <Typography variant="body2" className={classes.paragraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

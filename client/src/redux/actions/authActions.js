@@ -27,11 +27,11 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 
     })
     .catch((err) => {
-      console.log(err.response.data);
+      console.log(err.response);
       if (err.response) {
         dispatch({
           type: SET_ERRORS,
-          payload: err.response.data,
+          payload: err.response,
         });
       } else {
         dispatch({

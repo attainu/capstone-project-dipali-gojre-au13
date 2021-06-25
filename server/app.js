@@ -1,14 +1,15 @@
 const path = require("path");
 
 const express = require("express");
-const bodyParser = require("body-parser");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv")
 dotenv.config()
 
 const app = express();
+app.use(cors())
 
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 
 const multer = require("multer");
 
@@ -41,7 +42,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: fileStorage, fileFilter: fileFilter });
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //set headers
@@ -80,13 +81,12 @@ const client = {};
 
 
 
-const URI = `mongodb+srv://dipalisag:admin@cluster0.f8xea.mongodb.net/Foodapp?retryWrites=true&w=majority`
 
-mongoose.connect(URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false})
+mongoose.connect(process.env.URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false})
   
   .then((result) => {
     console.log("Connected to db");
-    const server = app.listen(process.env.PORT, (req, res) =>{
+    const server = app.listen(PORT, (req, res) =>{
       console.log(`Server is running on ${PORT}`);
     });
     const io = require("./util/socket").init(server);
